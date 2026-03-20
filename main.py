@@ -15,7 +15,8 @@ app = FastAPI()
 
 # Configuramos CORS para permitir que Angular se conecte
 origenes_permitidos =[
-"http://localhost:4200"
+    "http://localhost:4200",
+    "https://app-tareas-yfzy.onrender.com",
 ]
 
 app.add_middleware(
