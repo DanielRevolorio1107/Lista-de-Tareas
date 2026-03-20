@@ -1,9 +1,17 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
+import os
 
 # El formato es: postgresql://usuario:contraseña@servidor:puerto/nombre_de_la_base_de_datos
-URL_BASE_DATOS= "postgresql://postgres:daniuwu11@localhost:5432/gestor_tareas"
+# Buscamos la URL en la nube bajo el nombre "DATABASE_URL".
+# Si no la encuentra (porque estás en tu compu), usa tu ruta local.
+URL_BASE_DATOS = os.getenv(
+"postgresql://postgres:daniuwu11@localhost:5432/gestor_tareas"
+)
+
+if URL_BASE_DATOS.startswith("postgres://"):
+    URL_BASE_DATOS = URL_BASE_DATOS.replace("postgres://", "postgresql://", 1)
 
 # El 'engine' es el motor que realmente maneja la comunicación con PostgreSQL
 engine = create_engine(URL_BASE_DATOS)
