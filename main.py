@@ -66,9 +66,9 @@ def actualizar_tares(id: int, tarea_actualizada: schemas.TareaActualizar, db: Se
 # 3. Actualizamos solo los datos que el usuario nos envió
     if tarea_actualizada.titulo is not None:
         tarea_db.titulo = tarea_actualizada.titulo
-    if tarea_db.descripcion is not None:
+    if tarea_actualizada.descripcion is not None:
         tarea_db.descripcion = tarea_actualizada.descripcion
-    if tarea_db.completada is not None:
+    if tarea_actualizada.completada is not None:
         tarea_db.completada = tarea_actualizada.completada
 # 4. Guardamos los cambios en PostgreSQL
     db.commit()
@@ -76,7 +76,7 @@ def actualizar_tares(id: int, tarea_actualizada: schemas.TareaActualizar, db: Se
     return tarea_db
 
 # Nuestra cuarta y última ruta CRUD: ELIMINAR
-@app.delete("/tareas/{id}")
+@app.delete("/tareas/{id}/")
 def elimitar_tareas(id: int, db: Session = Depends(get_db)):
     #1.Buscar la tarea
     tarea_db = db.query(models.Tareas).filter(models.Tareas.id == id).first()
