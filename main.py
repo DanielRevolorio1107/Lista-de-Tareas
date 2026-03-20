@@ -55,7 +55,7 @@ def leer_tareas(db: Session = Depends(get_db)):
     return tareas
 
 #Nuestra tercera ruta CRUD: ACTUALIZAR
-@app.put("/tareas/{id}",response_model=schemas.TareaRespuesta)
+@app.put("/tareas/{id/}",response_model=schemas.TareaRespuesta)
 def actualizar_tares(id: int, tarea_actualizada: schemas.TareaActualizar, db: Session = Depends(get_db)):
 #1. Buscamos la tarea por su ID en la base de datos
     tarea_db = db.query(models.Tareas).filter(models.Tareas.id == id).first()
