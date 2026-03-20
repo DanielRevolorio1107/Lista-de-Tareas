@@ -7,7 +7,8 @@ import os
 # Buscamos la URL en la nube bajo el nombre "DATABASE_URL".
 # Si no la encuentra (porque estás en tu compu), usa tu ruta local.
 URL_BASE_DATOS = os.getenv(
-"postgresql://postgres:daniuwu11@localhost:5432/gestor_tareas"
+    "DATABASE_URL",
+    "postgresql://postgres:daniuwu11@localhost:5432/gestor_tareas"
 )
 
 if URL_BASE_DATOS.startswith("postgres://"):
